@@ -61,7 +61,26 @@ app.get('/:id', function(req, res) {
 	});
 })
 
+/*
+*
+* method > deleteUser
+* methd delete : 
+*
+*/
 
+app.delete('deleteUser', function(req, res){
+	fs.readFile(__dirname + "/" + "users.json", 'utf8', function(err, data){
+		//Variable 'data' will contain the result of user information to retrieve all ressource
+		data = JSON.parse(data);
+		//Delete a user (id:2)
+		delete data["user" + 2];
+		//Display in log data of the deleted user
+		console.log("Delete user" + JSON.stringify(data));
+		//Send the information of the result with the user deleted
+		res.send(JSON.stringify(data));
+	})
+
+})
 
 let server = app.listen(8081, function(){
     let host = server.address().address
