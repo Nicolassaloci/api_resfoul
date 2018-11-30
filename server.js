@@ -48,7 +48,7 @@ app.post('/addUsers', function(req, res) {
 *
 */
 
-app.get('/getUserByID', function(req, res) {
+app.get('/:id', function(req, res) {
 	fs.readFile(__dirname + "/" + "users.json", 'utf8', function(err, data){
 	if(err) throw err;
 		//Variable 'user' wiil contain the result of users information to retrieve all ressources
